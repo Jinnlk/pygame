@@ -9,7 +9,7 @@ GAME_OVER = False
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 player_pos = pygame.Vector2(600, 400)
-screen.fill("purple")
+screen.fill([204, 169, 221])
 
 # function to game duration
 def check_time():
@@ -18,17 +18,17 @@ def check_time():
 # game state loop, runs until game is over
 while not GAME_OVER:
 
-    screen.fill("purple")
+    screen.fill([204, 169, 221])
 
     # movement tech, checks for key presses and moves avatar accordingly
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_w]:
+    if player_pos.y > 0 and keys[pygame.K_w]:
         player_pos.y -= 5
-    if keys[pygame.K_s]:
+    if player_pos.y < HEIGHT and keys[pygame.K_s]:
         player_pos.y += 5
-    if keys[pygame.K_a]:
+    if player_pos.x > 0 and keys[pygame.K_a]:
         player_pos.x -= 5
-    if keys[pygame.K_d]:
+    if player_pos.x < WIDTH and keys[pygame.K_d]:
         player_pos.x += 5
 
     # renders display according to new avatar location
